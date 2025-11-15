@@ -37,18 +37,27 @@ This project is a boilerplate React application that demonstrates how to use:
 
 
 # 🚀 Getting Started
-1️⃣ Clone the repository
+1️⃣ Clone the repository (you can run the create-react-redux-project to manually create folders and files)
 ```
 git clone https://github.com/olwenza/landing-page.git
 cd your-repo
 ```
-
-2️⃣ Install dependencies
+1- Update your package lists.
 ```
-npm install
+brew update
 ```
 
-3️⃣ Start the development server
+2- Install Node.js and npm.
+```
+brew install node
+``` 
+
+3- Install VITE
+``
+npm install --save-dev vite
+``
+
+4- Start the development server
 ```
 npm run dev
 ```
