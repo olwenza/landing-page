@@ -53,9 +53,9 @@ brew install node
 ``` 
 
 3- Install VITE
-``
+```
 npm install --save-dev vite
-``
+```
 
 4- Start the development server
 ```
