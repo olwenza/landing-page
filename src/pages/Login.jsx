@@ -16,7 +16,7 @@ export default function Login() {
 
   return (
     <div>
-      <h1>Login</h1>
+      <h1 class="text-3xl font-bold leading-tight text-gray-900">Login</h1>
 
       <form onSubmit={handleSubmit}>
         <input

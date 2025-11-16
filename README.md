@@ -42,26 +42,44 @@ This project is a boilerplate React application that demonstrates how to use:
 git clone https://github.com/olwenza/landing-page.git
 cd your-repo
 ```
-1- Update your package lists.
+1️⃣ Update your package lists.
 ```
 brew update
 ```
 
-2- Install Node.js and npm.
+2️⃣ Install Node.js and npm.
 ```
 brew install node
 ``` 
 
-3- Install VITE
+3️⃣ Install VITE
 ```
-npm install --save-dev vite
+npm install vite
 ```
 
-4- Start the development server
+4️⃣ Install Vite Reach plugin
+```
+npm install @vitejs/plugin-react
+```
+
+- Install tailwind css
+```
+npm install -D @tailwindcss/postcss
+```
+
+😎 Clean install
+```
+rm -rf node_modules package-lock.json
+npm install -D @tailwindcss/postcss
+npm install @vitejs/plugin-react
+npm install react-icons
+npm install
+```
+
+5️⃣ Start the development server
 ```
 npm run dev
 ```
-
 
 ## Authors
 
