@@ -9,7 +9,7 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      <h1 class="text-3xl font-bold leading-tight text-gray-900">Dashboard</h1>
       <p>Welcome back, {user.username}!</p>
     </div>
   );

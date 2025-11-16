@@ -1,16 +1,20 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// src/routes/AppRoutes.jsx
+import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
-import Login from "../pages/Login";
+import AboutUs from "../pages/AboutUs";
 import Dashboard from "../pages/Dashboard";
+import ContactUs from "../pages/ContactUs";
+import Login from "../pages/Login";
+
 
 export default function AppRoutes() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about-us" element={<AboutUs />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/contact-us" element={<ContactUs />} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
   );
 }
