@@ -75,9 +75,7 @@ npm install @vitejs/plugin-react
 npm install react-icons
 ```
 
-6️⃣ Install Cryptojs
-```
-Install Cryptojs - to compute secret hash correcly
+6️⃣ Install Cryptojs - to compute secret hash correctly
 ```
 npm install crypto-js
 ```

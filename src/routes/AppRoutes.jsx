@@ -6,6 +6,8 @@ import Dashboard from "../pages/Dashboard";
 import ContactUs from "../pages/ContactUs";
 import Login from "../pages/Login";
 import Logout from "../pages/Logout";
+import SignUp from "../pages/SignUp";
+import ConfirmSignup from "../pages/ConfirmSignup";
 
 export default function AppRoutes() {
   return (
@@ -16,6 +18,8 @@ export default function AppRoutes() {
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/login" element={<Login />} />
       <Route path="/logout" element={<Logout />} />
+      <Route path="/signup" element={<SignUp/>} />
+      <Route path="/confirm-signup" element={<ConfirmSignup/>} />
     </Routes>
   );
 }
