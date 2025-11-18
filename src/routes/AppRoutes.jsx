@@ -5,7 +5,7 @@ import AboutUs from "../pages/AboutUs";
 import Dashboard from "../pages/Dashboard";
 import ContactUs from "../pages/ContactUs";
 import Login from "../pages/Login";
-
+import Logout from "../pages/Logout";
 
 export default function AppRoutes() {
   return (
@@ -15,6 +15,7 @@ export default function AppRoutes() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/logout" element={<Logout />} />
     </Routes>
   );
 }

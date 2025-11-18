@@ -2,64 +2,64 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../features/auth/authSlice";
-import { mockLoginAPI } from "../features/auth/authAPI";
 import { useNavigate } from "react-router-dom";
-
 import cognitoLogin from "../api/cognitoAuth";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); // <-- NEW loading state
+
   const dispatch = useDispatch();
-  const [error, setError] = useState(""); // <-- error state
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // clear previous error
+    setError("");
+    setLoading(true); // <-- start loading animation
 
     try {
-      //const user = await mockLoginAPI(username, password); /** MockLogin */
       const response = await cognitoLogin(username, password);
       console.log("Auth Success:", response.data);
 
       const auth = response.data.AuthenticationResult;
-      const idPayload = JSON.parse(atob(auth.IdToken.split('.')[1]));
+      const idPayload = JSON.parse(atob(auth.IdToken.split(".")[1]));
 
       const user = {
         username: idPayload["cognito:username"],
         email: idPayload.email,
-        tokens: auth
+        tokens: auth,
       };
 
-      // Save user/tokens to Redux
       dispatch(login(user));
-
-      //redirect to dashboard
-      // Redirect to dashboard on success
       navigate("/dashboard");
 
     } catch (err) {
       console.error("Cognito Login Error:", err.response?.data || err.message);
-      // Show friendly error message
+
       setError(
         err.response?.data?.message ||
-          "Login failed. Please check your credentials and try again."
+          "Login failed. Please check your credentials."
       );
     }
 
+    setLoading(false); // <-- end loading animation
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50 flex items-center justify-center px-6 py-12">
       <div className="max-w-md w-full bg-white rounded-3xl shadow-2xl p-10">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">Login</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center page-title">
+          Login
+        </h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Error Message */}
           {error && (
             <p className="text-red-500 text-sm text-center mt-2">{error}</p>
           )}
+
           {/* Username */}
           <div className="relative">
             <input
@@ -98,17 +98,35 @@ export default function Login() {
             </label>
           </div>
 
+          {/* Button WITH loading animation */}
           <button
             type="submit"
-            className="w-full py-4 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold text-lg hover:from-indigo-600 hover:to-purple-600 shadow-lg transition"
+            disabled={loading}
+            className={`w-full py-4 rounded-xl text-white font-semibold text-lg shadow-lg transition
+              ${
+                loading
+                  ? "bg-indigo-400 cursor-not-allowed"
+                  : "bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600"
+              }
+            `}
           >
-            Login
+            {loading ? (
+              <div className="flex items-center justify-center space-x-3">
+                <div className="w-6 h-6 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+                <span className="animate-pulse">Signing in...</span>
+              </div>
+            ) : (
+              "Login"
+            )}
           </button>
         </form>
 
         <p className="text-center text-gray-500 mt-6">
           Don't have an account?{" "}
-          <a href="/signup" className="text-indigo-500 font-semibold hover:underline">
+          <a
+            href="/signup"
+            className="text-indigo-500 font-semibold hover:underline"
+          >
             Sign Up
           </a>
         </p>

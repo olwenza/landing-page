@@ -23,7 +23,7 @@ const ContactUs = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-6 py-12">
       <div className="max-w-3xl w-full bg-white rounded-3xl shadow-lg p-10">
-        <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
+        <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center page-title">
           Contact Us
         </h1>
         <p className="text-gray-600 text-center mb-8">
