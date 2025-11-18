@@ -1,8 +1,8 @@
 # 🚀 Project Title
-Landing Page - A React application using Redux for state management and React Router for client-side routing.
+Landing Page - A React application using Redux to demonstrate various React and AWS features.
 
 # 📝 Overview
-This project is a boilerplate React application that demonstrates how to use:
+This project is a React application that demonstrates how to use:
 
 * React for building UI components
 
@@ -14,7 +14,7 @@ This project is a boilerplate React application that demonstrates how to use:
 
 * Axios / Fetch API for making API calls
 
-* AWS Incognito for online user management
+* AWS Incognito for online user management (Registration, login, logout, password reset email confirmation etc.)
 
 
 
@@ -25,11 +25,21 @@ This project is a boilerplate React application that demonstrates how to use:
 
 * 📍 Protected and public routes
 
-* 🔐 Authentication flow example
-
 * 🎨 Modular component structure
 
 * ⚡ Fast dev environment with Vite
+
+* 🔐 Authentication flow example
+
+* ✏️ User login flow
+
+* 🚪 User logout flow
+
+* ✒️ User registration flow (Using AWS Incognito)
+
+* 📧 User email confirmation flow
+
+* ❓ User password reset flow
 
 
 # 🛠 Tech Stack

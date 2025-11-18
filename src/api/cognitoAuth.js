@@ -7,14 +7,10 @@ const COGNITO_ENDPOINT = import.meta.env.VITE_COGNITO_ENDPOINT;
 const CLIENT_ID = import.meta.env.VITE_COGNITO_CLIENT_ID;
 const CLIENT_SECRET = import.meta.env.VITE_COGNITO_CLIENT_SECRET;
 
-
 // -------------------------------------------------------
 // LOGIN (InitiateAuth)
 // -------------------------------------------------------
 export async function cognitoLogin(username, password) {
-console.log("API_URL= " + API_URL + "\nCOGNITO_ENDPOINT= " + COGNITO_ENDPOINT);
-console.log("\nCLIENT_ID= " + CLIENT_ID + "\nCLIENT_SECRET= " + CLIENT_SECRET);
-
   const SECRET_HASH = generateSecretHash(username, CLIENT_ID, CLIENT_SECRET);
 
   const payload = {
@@ -81,3 +77,46 @@ export async function cognitoConfirmSignUp(username, code) {
     },
   });
 }
+
+// -------------------------------------------------------
+// Forgot password
+// -------------------------------------------------------
+export async function cognitoForgotPassword(username) {
+  const SECRET_HASH = generateSecretHash(username, CLIENT_ID, CLIENT_SECRET);
+
+  const payload = {
+    ClientId: CLIENT_ID,
+    Username: username,
+    SecretHash: SECRET_HASH,
+  };
+
+  return await apiClient.post(COGNITO_ENDPOINT, payload, {
+    headers: {
+      "X-Amz-Target": "AWSCognitoIdentityProviderService.ForgotPassword",
+      "Content-Type": "application/x-amz-json-1.1",
+    },
+  });
+}
+
+// -------------------------------------------------------
+// CONFIRM forgot password
+// -------------------------------------------------------
+export async function cognitoConfirmForgotPassword(username, code, newPassword) {
+  const SECRET_HASH = generateSecretHash(username, CLIENT_ID, CLIENT_SECRET);
+
+  const payload = {
+    ClientId: CLIENT_ID,
+    Username: username,
+    ConfirmationCode: code,
+    Password: newPassword,
+    SecretHash: SECRET_HASH,
+  };
+
+  return await apiClient.post(COGNITO_ENDPOINT, payload, {
+    headers: {
+      "X-Amz-Target": "AWSCognitoIdentityProviderService.ConfirmForgotPassword",
+      "Content-Type": "application/x-amz-json-1.1",
+    },
+  });
+}
+
