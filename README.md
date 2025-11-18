@@ -10,12 +10,18 @@ This project is a boilerplate React application that demonstrates how to use:
 
 * React Router v6 for navigation
 
+* Vite build tool for fast env
+
 * Axios / Fetch API for making API calls
+
+* AWS Incognito for online user management
+
+
 
 
 # ⭐ Features
 
-🔄 Global state management with Redux Toolkit
+* 🔄 Global state management with Redux Toolkit
 
 * 📍 Protected and public routes
 
@@ -23,7 +29,7 @@ This project is a boilerplate React application that demonstrates how to use:
 
 * 🎨 Modular component structure
 
-* ⚡ Fast dev environment with Vite / CRA (choose as needed)
+* ⚡ Fast dev environment with Vite
 
 
 # 🛠 Tech Stack
@@ -33,8 +39,9 @@ This project is a boilerplate React application that demonstrates how to use:
 | Redux Toolkit | State management      |
 | React Router  | Routing               |
 | Axios         | HTTP requests         |
-| Vite / CRA    | Build tool (pick one) |
+| Vite          | Build tool            |
 | Tailwindcss   | CSS library           |
+| AWS Incognito | User management       |
 
 
 # 🚀 Getting Started
@@ -69,6 +76,7 @@ npm install react-icons
 ```
 
 6️⃣ Install Cryptojs
+```
 Install Cryptojs - to compute secret hash correcly
 ```
 npm install crypto-js
