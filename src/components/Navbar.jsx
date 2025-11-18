@@ -43,9 +43,14 @@ export default function Navbar() {
             </Link>
           ) : (
             <div className="flex items-center space-x-4">
-              <span className="text-gray-600">
-                Welcome, <span className="font-medium">{user?.username}</span>
-              </span>
+              <div className="px-3 py-1 bg-indigo-50 rounded-full shadow-sm animate-fadeIn">
+                <span className="text-gray-700 text-sm">
+                  Welcome,&nbsp;
+                  <span className="font-semibold text-indigo-600 tracking-wide">
+                    {user?.username}
+                  </span>
+                </span>
+              </div>
 
               <button
                 onClick={() => dispatch(logout())}
