@@ -34,6 +34,7 @@ This project is a boilerplate React application that demonstrates how to use:
 | React Router  | Routing               |
 | Axios         | HTTP requests         |
 | Vite / CRA    | Build tool (pick one) |
+| Tailwindcss   | CSS library           |
 
 
 # 🚀 Getting Started
@@ -52,31 +53,34 @@ brew update
 brew install node
 ``` 
 
-3️⃣ Install VITE
-```
-npm install vite
-```
-
-4️⃣ Install Vite Reach plugin
-```
-npm install @vitejs/plugin-react
-```
-
-- Install tailwind css
+3️⃣ Install tailwindcss
 ```
 npm install -D @tailwindcss/postcss
 ```
 
-😎 Clean install
+4️⃣ Install vite
+```
+npm install @vitejs/plugin-react
+```
+
+5️⃣ Install react-icons
+```
+npm install react-icons
+```
+
+6️⃣ Install Cryptojs
+Install Cryptojs - to compute secret hash correcly
+```
+npm install crypto-js
+```
+
+7️⃣ Clean install
 ```
 rm -rf node_modules package-lock.json
-npm install -D @tailwindcss/postcss
-npm install @vitejs/plugin-react
-npm install react-icons
 npm install
 ```
 
-5️⃣ Start the development server
+ 8️⃣ Start the development server
 ```
 npm run dev
 ```
