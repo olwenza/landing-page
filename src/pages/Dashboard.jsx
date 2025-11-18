@@ -4,7 +4,14 @@ export default function Dashboard() {
   const { isAuthenticated, user } = useSelector((state) => state.auth);
 
   if (!isAuthenticated) {
-    return <h2>You must be logged in to view this page.</h2>;
+    return (
+<div className="min-h-screen bg-gray-50 flex items-start justify-center px-6 py-12">
+  <div className="max-w-4xl w-full bg-white rounded-3xl shadow-lg p-10">
+    <h2>You must be logged in to view this page.</h2>
+  </div>
+</div>
+
+    )
   }
 
   return (
