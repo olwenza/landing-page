@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import Logout from "../pages/Logout";
 import SignUp from "../pages/SignUp";
 import ConfirmSignup from "../pages/ConfirmSignup";
+import PasswordReset from "../pages/PasswordReset";
 
 export default function AppRoutes() {
   return (
@@ -18,8 +19,10 @@ export default function AppRoutes() {
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/login" element={<Login />} />
       <Route path="/logout" element={<Logout />} />
-      <Route path="/signup" element={<SignUp/>} />
-      <Route path="/confirm-signup" element={<ConfirmSignup/>} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/confirm-signup" element={<ConfirmSignup />} />
+      <Route path="/password-reset" element={<PasswordReset />} />
+
     </Routes>
   );
 }
