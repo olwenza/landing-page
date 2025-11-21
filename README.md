@@ -102,7 +102,6 @@ npm run dev
 ```
 
 ## Authors
-
 Contributors names and contact info
 
 Ivan Augustino
