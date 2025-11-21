@@ -36,12 +36,12 @@ jobs:
 
       - name: Sync build to S3
         run: |
-          aws s3 cp dist/ s3://landing-page-dev-ivan/ --recursive \
+          aws s3 cp build/ s3://landing-page-dev-ivan/ --recursive \
           --content-type "application/javascript" --exclude "*" --include "*.js" --acl private
-          aws s3 cp dist/ s3://landing-page-dev-ivan/ --recursive \
+          aws s3 cp build/ s3://landing-page-dev-ivan/ --recursive \
           --content-type "text/css" --exclude "*" --include "*.css" --acl private
-          aws s3 cp dist/index.html s3://landing-page-dev-ivan/index.html --content-type "text/html" --acl private
-          aws s3 cp dist/favicon.ico s3://landing-page-dev-ivan/favicon.ico --content-type "image/x-icon" --acl private
+          aws s3 cp build/index.html s3://landing-page-dev-ivan/index.html --content-type "text/html" --acl private
+          aws s3 cp build/favicon.ico s3://landing-page-dev-ivan/favicon.ico --content-type "image/x-icon" --acl private
 
       - name: Invalidate CloudFront cache
         run: |
