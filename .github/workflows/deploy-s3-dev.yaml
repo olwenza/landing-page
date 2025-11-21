@@ -43,7 +43,7 @@ jobs:
 
       - name: Sync build to S3
         run: |
-          aws s3 sync dist/ s3://${{ vars.S3_BUCKET }} --delete --acl private
+          aws s3 sync build/ s3://${{ vars.S3_BUCKET }} --delete --acl private
 
       - name: Invalidate CloudFront cache
         run: |
