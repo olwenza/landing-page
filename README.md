@@ -15,6 +15,7 @@ This project is a React application that demonstrates how to use:
 * Axios / Fetch API for making API calls
 
 * AWS Incognito for online user management (Registration, login, logout, password reset email confirmation etc.)
+* Git Action to deploy to AWS S3
 
 
 
