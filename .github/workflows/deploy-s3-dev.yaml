@@ -43,7 +43,12 @@ jobs:
 
       - name: Sync build to S3
         run: |
-          aws s3 sync build/ s3://${{ vars.S3_BUCKET }} --delete --acl private
+          aws s3 cp build/ s3://${{ vars.S3_BUCKET }} --recursive \
+          --content-type "application/javascript" --exclude "*" --include "*.js" --acl private
+          aws s3 cp build/ s3://${{ vars.S3_BUCKET }} --recursive \
+          --content-type "text/css" --exclude "*" --include "*.css" --acl private
+          aws s3 cp build/index.html s3://${{ vars.S3_BUCKET }}index.html --content-type "text/html" --acl private
+          aws s3 cp favicon.ico s3://${{ vars.S3_BUCKET }}favicon.ico --content-type "image/x-icon" --acl private
 
       - name: Invalidate CloudFront cache
         run: |
