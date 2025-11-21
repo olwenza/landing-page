@@ -1,0 +1,48 @@
+# CI/CD via GitHub Actions
+# To integrate building + deploying our React code on pushes to GitHub
+#######################################################################a
+name: Deploy React App to S3 (Dev)
+
+on:
+  push:
+    branches:
+      - dev   # Trigger only on pushes to dev branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Vite app
+        run: npm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1  # change if your S3 bucket is in another region
+
+      - name: Sync build to S3
+        run: |
+          aws s3 cp dist/ s3://landing-page-dev-ivan/ --recursive \
+          --content-type "application/javascript" --exclude "*" --include "*.js" --acl private
+          aws s3 cp dist/ s3://landing-page-dev-ivan/ --recursive \
+          --content-type "text/css" --exclude "*" --include "*.css" --acl private
+          aws s3 cp dist/index.html s3://landing-page-dev-ivan/index.html --content-type "text/html" --acl private
+          aws s3 cp dist/favicon.ico s3://landing-page-dev-ivan/favicon.ico --content-type "image/x-icon" --acl private
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id YOUR_DIST_ID --paths "/*"
