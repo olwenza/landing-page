@@ -41,7 +41,7 @@ jobs:
           aws s3 cp build/ s3://landing-page-dev-ivan/ --recursive \
           --content-type "text/css" --exclude "*" --include "*.css" --acl private
           aws s3 cp build/index.html s3://landing-page-dev-ivan/index.html --content-type "text/html" --acl private
-          aws s3 cp build/favicon.ico s3://landing-page-dev-ivan/favicon.ico --content-type "image/x-icon" --acl private
+          aws s3 cp favicon.ico s3://landing-page-dev-ivan/favicon.ico --content-type "image/x-icon" --acl private
 
       - name: Invalidate CloudFront cache
         run: |
