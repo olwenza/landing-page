@@ -52,7 +52,7 @@ This project is a React application that demonstrates how to use:
 | Vite          | Build tool            |
 | Tailwindcss   | CSS library           |
 | AWS Incognito | User management       |
-
+| AWS S3        | Auto deployed to S3   |
 
 # 🚀 Getting Started
 1️⃣ Clone the repository (you can run the create-react-redux-project to manually create folders and files)
