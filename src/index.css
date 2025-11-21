@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0.3; }
+}
+
+.animate-fadeOut {
+  animation: fadeOut 0.8s ease-in-out infinite alternate;
+}
+
+.page-title{
+    padding-bottom: 10px;
+}
