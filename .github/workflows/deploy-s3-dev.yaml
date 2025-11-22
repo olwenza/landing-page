@@ -26,7 +26,7 @@ jobs:
           echo "VITE_APP_ENV=${{ vars.VITE_APP_ENV }}" >> .env
           echo "VITE_COGNITO_ENDPOINT=${{ vars.VITE_COGNITO_ENDPOINT }}" >> .env
           echo "VITE_COGNITO_CLIENT_ID=${{ vars.VITE_COGNITO_CLIENT_ID }}" >> .env
-          echo "VITE_SECRET_KEY=${{ secrets.VITE_SECRET_KEY }}" >> .env
+          echo "VITE_COGNITO_CLIENT_SECRET=${{ vars.VITE_COGNITO_CLIENT_SECRET }}" >> .env
 
       - name: Install dependencies
         run: npm install
