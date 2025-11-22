@@ -1,0 +1,57 @@
+name: Deploy React App to S3 (Dev)
+
+on:
+  push:
+    branches:
+      - dev  # Trigger only on the dev branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment: dev   # <- reads secrets + variables from the dev environment
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      # Build Vite environment file (Required by react)
+      - name: Create .env file
+        run: |
+          echo "VITE_API_URL=${{ vars.VITE_API_URL }}" >> .env
+          echo "VITE_APP_ENV=${{ vars.VITE_APP_ENV }}" >> .env
+          echo "VITE_COGNITO_ENDPOINT=${{ vars.VITE_COGNITO_ENDPOINT }}" >> .env
+          echo "VITE_COGNITO_CLIENT_ID=${{ vars.VITE_COGNITO_CLIENT_ID }}" >> .env
+          echo "VITE_COGNITO_CLIENT_SECRET=${{ secrets.VITE_COGNITO_CLIENT_SECRET }}" >> .env
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Vite app
+        run: npm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Sync build to S3
+        run: |
+          aws s3 cp build/ s3://${{ vars.S3_BUCKET }} --recursive \
+          --content-type "application/javascript" --exclude "*" --include "*.js" --acl private
+          aws s3 cp build/ s3://${{ vars.S3_BUCKET }} --recursive \
+          --content-type "text/css" --exclude "*" --include "*.css" --acl private
+          aws s3 cp build/index.html s3://${{ vars.S3_BUCKET }}index.html --content-type "text/html" --acl private
+          aws s3 cp favicon.ico s3://${{ vars.S3_BUCKET }}favicon.ico --content-type "image/x-icon" --acl private
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"

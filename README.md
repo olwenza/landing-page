@@ -15,6 +15,7 @@ This project is a React application that demonstrates how to use:
 * Axios / Fetch API for making API calls
 
 * AWS Incognito for online user management (Registration, login, logout, password reset email confirmation etc.)
+* Git Action to deploy to AWS S3
 
 
 
@@ -52,7 +53,7 @@ This project is a React application that demonstrates how to use:
 | Vite          | Build tool            |
 | Tailwindcss   | CSS library           |
 | AWS Incognito | User management       |
-
+| AWS S3        | Auto deployed to S3   |
 
 # 🚀 Getting Started
 1️⃣ Clone the repository (you can run the create-react-redux-project to manually create folders and files)
@@ -102,7 +103,6 @@ npm run dev
 ```
 
 ## Authors
-
 Contributors names and contact info
 
 Ivan Augustino
