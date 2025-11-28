@@ -9,10 +9,10 @@ const Home = () => {
       <section className="bg-indigo-600 text-white">
         <div className="max-w-7xl mx-auto px-6 py-24 text-center">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-4">
-            Build <span className="text-yellow-300">Amazing Apps</span> with Ease
+            AWS CLOUD<span className="text-yellow-300">, IA, ML</span> & more...
           </h1>
           <p className="text-lg md:text-xl mb-8 text-indigo-100">
-            Fast, modern, and responsive layouts powered by React & TailwindCSS.
+            Brought to you by Ivan Augustino
           </p>
           <Link
             to="/dashboard"

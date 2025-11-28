@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/images/logo-idemo.png";
 
 export default function Navbar() {
   const { isAuthenticated, user } = useSelector((state) => state.auth);
@@ -13,9 +14,12 @@ export default function Navbar() {
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
         <Link to="/" className="text-xl font-bold text-indigo-600">
-          MyApp
+          <img
+            src={logo}
+            alt="App Logo"
+            style={{ width: 138, height: 60, objectFit: "contain" }}
+          />       
         </Link>
 
         {/* Desktop Menu */}

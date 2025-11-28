@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import AppRoutes from "./routes/AppRoutes";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Chatbot from "./features/chat/Chatbot";
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
 
         <main className="max-w-6xl mx-auto px-6 py-8">
           <AppRoutes />
+          <Chatbot />
         </main>
-      <Footer />
+        <Footer />
       </div>
     </Router>
   );
