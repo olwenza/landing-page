@@ -71,6 +71,7 @@ brew update
 brew install node
 ``` 
 
+* FRONT END
 3️⃣ Install tailwindcss
 ```
 npm install -D @tailwindcss/postcss
@@ -100,6 +101,22 @@ npm install
  8️⃣ Start the development server
 ```
 npm run dev
+```
+
+* BACKEND
+1️⃣ Initialize backend and install dependencies. Go to ./backend directory
+```
+npm init -y
+npm install express cors @aws-sdk/client-bedrock-agent-runtime
+npm install @aws-sdk/client-bedrock
+npm install node-fetch
+
+npm install dotenv
+```
+
+2️⃣ Start the backend server
+```
+node server.js
 ```
 
 ## Authors
