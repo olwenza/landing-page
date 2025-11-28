@@ -54,70 +54,77 @@ This project is a React application that demonstrates how to use:
 | Tailwindcss   | CSS library           |
 | AWS Incognito | User management       |
 | AWS S3        | Auto deployed to S3   |
+| AWS Cloudfront| Serves website live.  |
+| AWS Lambda    | Handles chat bot      |
+| AWS Cloudwatch| Handle logs           |
+| AWS API GW.   | Called by chat bot    |
+| AWS Bedrock   | Inteprets chat message|
 
 # 🚀 Getting Started
-1️⃣ Clone the repository (you can run the create-react-redux-project to manually create folders and files)
+### Local Machine
+1. Clone the repository (you can run the create-react-redux-project to manually create folders and files)
 ```
 git clone https://github.com/olwenza/landing-page.git
 cd your-repo
 ```
-1️⃣ Update your package lists.
+2. Update your package lists.
 ```
 brew update
 ```
 
-2️⃣ Install Node.js and npm.
+3. Install Node.js and npm.
 ```
 brew install node
 ``` 
-
-* FRONT END
-3️⃣ Install tailwindcss
+ 
+4. Install tailwindcss
 ```
 npm install -D @tailwindcss/postcss
 ```
 
-4️⃣ Install vite
+5. Install vite
 ```
 npm install @vitejs/plugin-react
 ```
 
-5️⃣ Install react-icons
+6. Install react-icons
 ```
 npm install react-icons
 ```
 
-6️⃣ Install Cryptojs - to compute secret hash correctly
+7. Install Cryptojs - to compute secret hash correctly
 ```
 npm install crypto-js
 ```
 
-7️⃣ Clean install
+8. Clean install
 ```
 rm -rf node_modules package-lock.json
 npm install
 ```
 
- 8️⃣ Start the development server
+ 9. Run - Locally - Start the development server
 ```
 npm run dev
 ```
 
-* BACKEND
-1️⃣ Initialize backend and install dependencies. Go to ./backend directory
+10. Run - Locally - Start the development server
 ```
-npm init -y
-npm install express cors @aws-sdk/client-bedrock-agent-runtime
-npm install @aws-sdk/client-bedrock
-npm install node-fetch
-
-npm install dotenv
+npm run dev
 ```
 
-2️⃣ Start the backend server
+11. App will lunch at the followig URL
 ```
-node server.js
+http://localhost:5174/
 ```
+
+### Remote
+1. Push your branch changes into dev branch and app will be auto uploaded to a s3 bucket via github action 
+2. Live app will be lunch via Cloudfront at
+```
+d11atov17l37i4.cloudfront.net
+```
+ 
 
 ## Authors
 Contributors names and contact info
